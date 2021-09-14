@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CustomerAPI.Data;
+using CustomerAPI.Models;
 using CustomerAPI.Models.Dto;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -20,14 +21,48 @@ namespace CustomerAPI.Repository
             this._mapper = mapper;
         }
 
-        public Task<ClienteDto> CreateUpdate(ClienteDto clienteDto)
+        public async Task<ClienteDto> CreateUpdate(ClienteDto clienteDto)
         {
-            throw new NotImplementedException();
+            var cliente = new Cliente();
+            if (clienteDto.Id == 0)
+            {
+                cliente = _mapper.Map<Cliente>(clienteDto);
+                await _dbContext.AddAsync(cliente);
+            }
+            else
+            {
+                //var clienteDb = GetClienteById(clienteDto.Id);
+                var cliente2 = _mapper.Map<Cliente>(clienteDto);
+
+                cliente = _mapper.Map<ClienteDto, Cliente>(clienteDto);
+                _dbContext.Update(cliente);
+            }
+
+            await _dbContext.SaveChangesAsync();
+
+            var result = _mapper.Map<ClienteDto>(cliente);
+            return result;
         }
 
-        public Task<bool> DeleteCliente(int id)
+        public async Task<bool> DeleteCliente(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var cliente = await _dbContext.Clientes.FindAsync(id);
+
+                if (cliente == null)
+                    return false;
+
+                _dbContext.Clientes.Remove(cliente);
+                await _dbContext.SaveChangesAsync();
+
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public async Task<ClienteDto> GetClienteById(int id)

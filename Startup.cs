@@ -1,5 +1,6 @@
 using AutoMapper;
 using CustomerAPI.Data;
+using CustomerAPI.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -34,6 +35,8 @@ namespace CustomerAPI
             IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
             services.AddSingleton(mapper);
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            services.AddScoped<IClienteRepository, ClienteRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
