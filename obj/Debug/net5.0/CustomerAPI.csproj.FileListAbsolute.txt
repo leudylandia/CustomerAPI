@@ -272,3 +272,7 @@ C:\Users\leudy\source\repos\CustomerAPI\obj\Debug\net5.0\CustomerAPI.dll
 C:\Users\leudy\source\repos\CustomerAPI\obj\Debug\net5.0\ref\CustomerAPI.dll
 C:\Users\leudy\source\repos\CustomerAPI\obj\Debug\net5.0\CustomerAPI.pdb
 C:\Users\leudy\source\repos\CustomerAPI\obj\Debug\net5.0\CustomerAPI.genruntimeconfig.cache
+C:\Users\leudy.delossantos\source\repos\CustomerAPI\bin\Debug\net5.0\AutoMapper.dll
+C:\Users\leudy.delossantos\source\repos\CustomerAPI\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\leudy.delossantos\source\repos\CustomerAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\leudy.delossantos\source\repos\CustomerAPI\bin\Debug\net5.0\Swashbuckle.AspNetCore.Annotations.dll

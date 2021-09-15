@@ -16,8 +16,9 @@ namespace CustomerAPI
         {
             var mappingConfig = new MapperConfiguration(config =>
             {
-                config.CreateMap<ClienteDto, Cliente>();
-                config.CreateMap<Cliente, ClienteDto>();
+                config.CreateMap<ClienteDto, Cliente>()
+                .ForMember(x => x.Age, opt => opt.MapFrom(x => x.Edad)); //Add
+                config.CreateMap<Cliente, ClienteDto>(); //Get
             });
 
             return mappingConfig;
