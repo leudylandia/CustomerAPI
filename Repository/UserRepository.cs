@@ -16,9 +16,18 @@ namespace CustomerAPI.Repository
         {
             this._dbContext = dbContext;
         }
-        public Task<string> Login(string username, string password)
+        public async Task<string> Login(string username, string password)
         {
-            throw new NotImplementedException();
+            var user = await _dbContext.Users.FirstOrDefaultAsync(u => u.UserName.ToLower().Equals(username));
+
+            if (user == null)
+                return "nouser";
+
+            if (!verificarPasswordHash(password, user.PasswordHash, user.PasswordSalt))
+                return "passwordwrong";
+
+            return "ok";
+
         }
 
         public async Task<int> Resgister(User user, string password)
@@ -63,6 +72,24 @@ namespace CustomerAPI.Repository
             {
                 passwordSalt = hmac.Key;
                 passwordHasd = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+            }
+        }
+
+        public bool verificarPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
+        {
+            using (var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt))
+            {
+                var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+
+                for (int i = 0; i < computedHash.Length; i++)
+                {
+                    if (computedHash[i] != passwordHash[i])
+                    {
+                        return false;
+                    }
+                }
+
+                return true;
             }
         }
     }
