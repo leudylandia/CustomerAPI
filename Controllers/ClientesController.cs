@@ -9,11 +9,13 @@ using CustomerAPI.Data;
 using CustomerAPI.Models;
 using CustomerAPI.Repository;
 using CustomerAPI.Models.Dto;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CustomerAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ClientesController : ControllerBase
     {
         private readonly IClienteRepository _clienteRepository;

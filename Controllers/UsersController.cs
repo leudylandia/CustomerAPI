@@ -50,5 +50,21 @@ namespace CustomerAPI.Controllers
 
             return Ok(_response);
         }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(UserDto user)
+        {
+            var rpt = await _userRepository.Login(user.User.UserName, user.Password);
+
+            if (rpt.Equals("nouser") || rpt.Equals("passwordwrong"))
+            {
+                _response.IsSuccess = false;
+                _response.DisplayMessage = "Usuario o password no son correcto";
+                return BadRequest(_response);
+            }
+            _response.Result = rpt;
+            _response.IsSuccess = true;
+            return Ok(_response);
+        }
     }
 }

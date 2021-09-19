@@ -276,3 +276,7 @@ C:\Users\leudy.delossantos\source\repos\CustomerAPI\bin\Debug\net5.0\AutoMapper.
 C:\Users\leudy.delossantos\source\repos\CustomerAPI\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\leudy.delossantos\source\repos\CustomerAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\leudy.delossantos\source\repos\CustomerAPI\bin\Debug\net5.0\Swashbuckle.AspNetCore.Annotations.dll
+C:\Users\leudy\source\repos\CustomerAPI\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\leudy\source\repos\CustomerAPI\bin\Debug\net5.0\Scrutor.dll
+C:\Users\leudy\source\repos\CustomerAPI\bin\Debug\net5.0\Swashbuckle.AspNetCore.Filters.dll
+C:\Users\leudy\source\repos\CustomerAPI\bin\Debug\net5.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
